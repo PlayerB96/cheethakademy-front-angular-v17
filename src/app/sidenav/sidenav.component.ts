@@ -34,6 +34,8 @@ export class SidenavComponent {
     { icon: 'dashboard', label: 'Panel', route: 'dashboard' },
     { icon: 'home', label: 'Inicio', route: 'home' },
     { icon: 'person', label: 'Perfil', route: 'profile' },
+    { icon: 'person', label: 'Perfil', route: 'profile' },
+
   ]);
   sideNavCollapsed = signal(false);
 
