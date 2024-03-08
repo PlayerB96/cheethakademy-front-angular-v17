@@ -1,5 +1,14 @@
+
+// ********TYPOGRAPHY*********
 @use "variables/typography.scss" as typo;
 
+// *********TAILWIND********
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+// ********STYLES PERSONALIZATE**********
 html,
 body {
     height: 100%;
