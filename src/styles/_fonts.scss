@@ -1,0 +1,41 @@
+@use 'variables/typography.scss' as type;
+
+@font-face {
+    font-family: type.$main-family-black;
+    src: url('../assets/fonts/Poppins-Black.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-black-italic;
+    src: url('../assets/fonts/Poppins-BlackItalic.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-bold;
+    src: url('../assets/fonts/Poppins-Bold.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-bold-italic;
+    src: url('../assets/fonts/Poppins-BoldItalic.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-extra-bold;
+    src: url('../assets/fonts/Poppins-ExtraBold.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-extra-bold-italic;
+    src: url('../assets/fonts/Poppins-ExtraBoldItalic.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-regular;
+    src: url('../assets/fonts/Poppins-Regular.ttf') format(truetype);
+}
+
+@font-face {
+    font-family: type.$main-family-semi-bold;
+    src: url('../assets/fonts/Poppins-SemiBold.ttf') format(truetype);
+}

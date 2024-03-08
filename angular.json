@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "cheethakademy-fron-angular-v17": {
+    "cheethakademy-front-angular-v17": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/cheethakademy-fron-angular-v17",
+            "outputPath": "dist/cheethakademy-front-angular-v17",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -30,7 +30,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles/index.scss"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -67,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "cheethakademy-fron-angular-v17:build:production"
+              "buildTarget": "cheethakademy-front-angular-v17:build:production"
             },
             "development": {
-              "buildTarget": "cheethakademy-fron-angular-v17:build:development"
+              "buildTarget": "cheethakademy-front-angular-v17:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "cheethakademy-fron-angular-v17:build"
+            "buildTarget": "cheethakademy-front-angular-v17:build"
           }
         },
         "test": {
@@ -95,12 +96,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles/index.scss"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "857a1349-ea72-4e87-8e17-9ae394bdc0f8"
   }
 }
