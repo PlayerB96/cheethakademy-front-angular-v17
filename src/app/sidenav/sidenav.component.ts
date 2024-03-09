@@ -6,12 +6,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-
-export type MenuItem = {
-  icon: string;
-  label: string;
-  route?: string;
-};
+import { AuthService } from '../services/auth/auth.service';
+import { Subscription } from 'rxjs';
+import {
+  menuItemsAdmin,
+  menuItemsUser,
+} from '../models/sidenav/menuItems.data';
+import { MenuItem } from '../models/sidenav/sidenav';
 
 @Component({
   selector: 'app-sidenav',
@@ -30,14 +31,27 @@ export type MenuItem = {
   styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent {
-  menuItems = signal<MenuItem[]>([
-    { icon: 'dashboard', label: 'Panel', route: 'dashboard' },
-    { icon: 'home', label: 'Inicio', route: 'home' },
-    { icon: 'person', label: 'Perfil', route: 'profile' },
+  // isRol$;
+  subscription!: Subscription;
+  isRol: string = '';
+  menuItems = signal<MenuItem[]>([]);
 
-  ]);
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    // Suscripción al BehaviorSubject
+    this.subscription = this.authService.isRol.subscribe((isRol: string) => {
+      this.isRol = isRol;
+      if (this.isRol == 'Estudiante') {
+        this.menuItems = menuItemsUser;
+      } else {
+        this.menuItems = menuItemsAdmin;
+      }
+    });
+    console.log('###');
+    console.log(this.isRol);
+  }
   sideNavCollapsed = signal(false);
-
   @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
   }

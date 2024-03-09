@@ -1,6 +1,7 @@
 # CheethakademyFronAngularV17
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+Node: 20.11.1
 
 ## Development server
 
@@ -25,3 +26,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## COMENTARIOS
+
+Se a omitido estas lineas de código en el "angular.json":
+"server": "src/main.server.ts",
+"prerender": true,
+"ssr": {
+"entry": "server.ts"
+}
+dentro de "build":
