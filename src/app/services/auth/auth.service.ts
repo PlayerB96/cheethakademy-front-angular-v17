@@ -11,6 +11,7 @@ import { BehaviorSubject, map } from 'rxjs';
 export class AuthService {
   constructor(private tokenService: TokenService, private http: HttpClient) {}
   isRol: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
   onLogin(data: ILogin) {
     return this.http
       .post<IloginResponse>(`${apiEndpoint.AuthEndpoint.login}`, data)
@@ -22,5 +23,9 @@ export class AuthService {
           }
         })
       );
+  }
+
+  onLogout() {
+    this.tokenService.removeToken();
   }
 }

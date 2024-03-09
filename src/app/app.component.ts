@@ -1,5 +1,5 @@
 import { Component, OnInit, computed, signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,6 +10,7 @@ import { MatListModule } from '@angular/material/list';
 import { Subscription } from 'rxjs';
 import { TokenService } from './services/auth/token.service';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from './services/auth/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -30,19 +31,30 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  constructor(private tokenService: TokenService) {}
+  constructor(
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   isAuth: boolean = false;
   subscription!: Subscription;
 
-  collapsed = signal(false);
-  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
   ngOnInit(): void {
-    // Suscripción al BehaviorSubject
+    /* Validación de Sesión para el cambio de Vista 'Login-Dashboard(Sidenav)' */
     this.subscription = this.tokenService.isAuthentication.subscribe(
       (isAuth: boolean) => {
         this.isAuth = isAuth;
       }
     );
   }
+
+  onLogout() {
+    this.authService.onLogout();
+    this.router.navigate(['']);
+  }
+
+  /* Manejo de la lógica del collapsed del sideNav */
+  collapsed = signal(false);
+  sidenavWidth = computed(() => (this.collapsed() ? '65px' : '250px'));
 }

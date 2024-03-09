@@ -31,7 +31,6 @@ import { MenuItem } from '../models/sidenav/sidenav';
   styleUrl: './sidenav.component.scss',
 })
 export class SidenavComponent {
-  // isRol$;
   subscription!: Subscription;
   isRol: string = '';
   menuItems = signal<MenuItem[]>([]);
@@ -39,22 +38,22 @@ export class SidenavComponent {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    // Suscripción al BehaviorSubject
+    /* Validación de rol en usuario */
     this.subscription = this.authService.isRol.subscribe((isRol: string) => {
       this.isRol = isRol;
+      /* Mostrar menuItems de SideNav de acuerdo a Rol */
       if (this.isRol == 'Estudiante') {
         this.menuItems = menuItemsUser;
       } else {
         this.menuItems = menuItemsAdmin;
       }
     });
-    console.log('###');
-    console.log(this.isRol);
   }
+
+  /* Manejo de la lógica del collapsed del sideNav */
   sideNavCollapsed = signal(false);
   @Input() set collapsed(val: boolean) {
     this.sideNavCollapsed.set(val);
   }
-
   profilePicSize = computed(() => (this.sideNavCollapsed() ? '45' : '100'));
 }
