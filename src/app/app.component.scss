@@ -1,28 +1,41 @@
 /* *********** STYLES CLASS PERSONALITY ************* */
+:host * {
+  transition: all 400ms ease-in-out;
+}
 .cheeth-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 h1.cheeth-sidenav {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 
 .sidenav-container {
-    flex: 1;
+  flex: 1;
+  // background-color: #f9fafb;
 }
 
 /* *********** CSS NG MATERIAL mat-sidenav ************* */
 
 mat-sidenav-container {
-    height: calc(100vh - 64px);
+  height: calc(100vh - 64px);
 }
 
-mat-sidenav, mat-sidenav-content {
-    transition: all 600ms ease-in-out
+mat-sidenav,
+mat-sidenav-content {
+  transition: all 400ms ease-in-out;
+}
+mat-sidenav,
+.mat-drawer-side {
+  border-right-width: 0;
+}
+
+mat-toolbar {
+  background: white;
 }

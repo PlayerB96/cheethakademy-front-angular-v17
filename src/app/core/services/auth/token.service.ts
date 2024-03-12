@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { constants } from '../../constants/constants';
+import { IData } from '../../models/auth/auth';
+import { constants } from '../../../constants/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +12,12 @@ export class TokenService {
   );
   constructor() {
     const token = this.getToken();
-    console.log(token);
     if (token) {
       this.updateToken(true);
     }
   }
 
+  /* Validaciones con el Token de inicio de Sesión*/
   updateToken(status: boolean) {
     this.isAuthentication.next(status);
   }
@@ -33,5 +34,11 @@ export class TokenService {
   removeToken() {
     this.updateToken(false);
     return localStorage.removeItem(constants.CURRENT_TOKEN);
+  }
+
+  /* Validaciones con los Datos del Usuario */
+  setDataUser(response: IData) {
+    this.updateToken(true);
+    localStorage.setItem(constants.DATA_USER, JSON.stringify(response));
   }
 }

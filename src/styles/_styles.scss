@@ -1,4 +1,3 @@
-
 // ********TYPOGRAPHY*********
 @use "variables/typography.scss" as typo;
 
@@ -7,13 +6,4 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-
 // ********STYLES PERSONALIZATE**********
-html,
-body {
-    height: 100%;
-}
-body {
-    margin: 0;
-    font-family: typo.$main-family-regular, sans-serif;
-}

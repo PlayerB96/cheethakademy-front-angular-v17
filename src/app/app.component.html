@@ -1,14 +1,37 @@
 @if (isAuth ) {
 <div>
-  <div class="cheeth-container">
+  <div class="mat-drawer-side">
     <mat-toolbar
-      color="primary"
-      class="example-toolbar flex justify-between items-center"
+      class="flex justify-between items-center dark:bg-gray-800 dark:text-white"
     >
       <button mat-icon-button (click)="collapsed.set(!collapsed())">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1 class="cheeth-sidenav">Responsive App</h1>
+      <div class="flex items-center">
+        @if (darkMode()) {
+        <img
+          src="assets/logo-cheethakademy_dark.png"
+          alt="img"
+          class="w-12 h-12 inline mr-2 transition-opacity ease-in duration-700"
+        />
+        } @else {
+        <img
+          src="assets/logo-cheethakademy.png"
+          alt="img"
+          class="w-12 h-12 inline mr-2 transition-opacity ease-in duration-700"
+        />
+        }
+
+        <h1 class="cheeth-sidenav">CheethAkademy</h1>
+        <button
+          class="flex transition-transform hover:scale-125 align-middle ml-2"
+          (click)="darkMode.set(!darkMode())"
+        >
+          @if(!darkMode()) { <span class="material-icons">dark_mode</span> }
+          @if(darkMode()) {<span class="material-icons">light_mode</span>}
+        </button>
+      </div>
+
       <button
         mat-icon-button
         [matMenuTriggerFor]="menu"
@@ -27,7 +50,7 @@
         </button>
         <button mat-menu-item disabled>
           <mat-icon>dialpad</mat-icon>
-          <span></span>
+          <span>Setting</span>
         </button>
         <button mat-menu-item (click)="onLogout()">
           <mat-icon>backspace</mat-icon>
@@ -43,8 +66,15 @@
       </mat-menu>
     </mat-toolbar>
 
-    <mat-sidenav-container class="sidenav-container">
-      <mat-sidenav opened mode="side" [style.width]="sidenavWidth()">
+    <mat-sidenav-container
+      class="sidenav-container dark:bg-gray-900 dark:text-white"
+    >
+      <mat-sidenav
+        class="dark:bg-gray-800 dark:text-white"
+        opened
+        mode="side"
+        [style.width]="sidenavWidth()"
+      >
         <app-sidenav [collapsed]="collapsed()"></app-sidenav>
       </mat-sidenav>
 

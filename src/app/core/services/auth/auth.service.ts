@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 import { TokenService } from './token.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpErrorResponse,
+} from '@angular/common/http';
 import { ILogin, IloginResponse } from '../../models/auth/auth';
-import { apiEndpoint } from '../../constants/constants';
-import { BehaviorSubject, map } from 'rxjs';
+import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
+import { apiEndpoint } from '../../../constants/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -19,8 +23,14 @@ export class AuthService {
         map((response) => {
           if (response) {
             this.tokenService.setToken(response.data.operatorId);
+            this.tokenService.setDataUser(response.data);
+
             this.isRol.next(response.data.rol);
           }
+          return response;
+        }),
+        catchError((error) => {
+          return throwError(() => error);
         })
       );
   }
