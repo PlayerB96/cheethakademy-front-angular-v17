@@ -1,4 +1,5 @@
 @if (isAuth ) {
+
 <div>
   <div class="mat-drawer-side">
     <mat-toolbar
@@ -39,7 +40,7 @@
       >
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu" class="custom-class">
         <button mat-menu-item [matMenuTriggerFor]="vertebrates">
           <mat-icon>dialpad</mat-icon>
           Vertebrates
