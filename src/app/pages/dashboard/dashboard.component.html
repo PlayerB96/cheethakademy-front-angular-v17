@@ -2,10 +2,10 @@
   [cols]="(cols$ | async) || 4"
   rowHeight="200px"
   class="m-4 dark:text-white"
+  [gutterSize]="'1rem'"
 >
   <mat-grid-tile
-    class="bg-gray-800"
-    *ngFor="let tile of tiles"
+    *ngFor="let tile of tilesDashboard"
     [colspan]="tile.cols"
     [rowspan]="tile.rows"
     class="dark:bg-gray-800"

@@ -40,3 +40,20 @@
     }
   }
 }
+.mdc-list-item__primary-text {
+  color: #111827;
+}
+.mat-mdc-list-base.mat-mdc-list-base
+  .mdc-list-item--activated
+  .mdc-list-item__primary-text {
+  color: #faa916;
+}
+.mat-mdc-list-base.mat-mdc-list-base
+  .mdc-list-item--activated.mdc-list-item--with-leading-icon
+  .mdc-list-item__start {
+  color: #faa916;
+}
+
+.mdc-list-item--with-leading-icon .mdc-list-item__start {
+  color: #111827;
+}

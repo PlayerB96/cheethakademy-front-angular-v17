@@ -39,19 +39,19 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       console.log(this.loginForm.value);
 
-      // this.authService.onLogin(this.loginForm.value).subscribe({
-      /* Validación para usuario válido */
-      // next: (value) => {
-      this.router.navigate(['dashboard']);
-      // },
-      /* Validación de errores 'usuario invalido(401) - server mantenimiento(500) */
-      // error: (error) => {
-      //   this.statusSubmit = error.error.status;
-      //   if (error.status === 401) {
-      //     this.messageError = error.error.message;
-      //   }
-      // },
-      // });
+      this.authService.onLogin(this.loginForm.value).subscribe({
+        /* Validación para usuario válido */
+        next: (value) => {
+          this.router.navigate(['dashboard']);
+        },
+        /* Validación de errores 'usuario invalido(401) - server mantenimiento(500) */
+        error: (error) => {
+          this.statusSubmit = error.error.status;
+          if (error.status === 401) {
+            this.messageError = error.error.message;
+          }
+        },
+      });
     } else {
       this.loginForm.markAllAsTouched();
     }

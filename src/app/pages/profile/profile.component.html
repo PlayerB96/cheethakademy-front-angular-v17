@@ -1,1 +1,150 @@
-<p>profile works!</p>
+<!-- Contenedor Principal -->
+
+<div
+  class="mx-auto bg-white dark:bg-gray-800 items-center justify-between px-8"
+  [ngClass]="getClassFlexcolHeight()"
+>
+  <!-- Contenedor Izquierdo - Image Perfil/Iconos Cursos-->
+  <div class="flex items-center" [ngClass]="getClassFlexcol()">
+    <img
+      src="assets/194377_n.jpg"
+      alt="img"
+      class="w-28 min-h-28 inline rounded-full border-2 border-gray-900"
+    />
+
+    <div class="text-center text-xl flex flex-col items-center">
+      <button
+        type="button"
+        class="text-red-800 bg-transparent border border-red-800 hover:bg-red-900 hover:text-white focus:ring-2 focus:outline-none focus:ring-red-800 font-medium rounded-lg text-xs px-1 py-1 text-center dark:hover:bg-yellow-700 dark:border-yellow-500 dark:text-yellow-500 dark:hover:text-white dark:focus:ring-yellow-500"
+        data-dismiss-target="#alert-additional-content-1"
+        aria-label="Close"
+      >
+        Mejorar Plan
+      </button>
+      <span class="text-gray-900 dark:text-white">Playerb96</span>
+
+      <div class="text-center text-sm items-center">
+        <span class="text-gray-900 dark:text-white"
+          >player.b.96&#64;hotmail.com</span
+        >
+      </div>
+    </div>
+
+    <!-- Contenedor Central - Iconos Cursos  -->
+
+    <div class="flex justify-between mx-8" [ngClass]="getClassFlexcol()">
+      <div
+        class="w-40 p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center"
+      >
+        <div class="flex">
+          <img
+            src="assets/icons/profile/active_course_10402869.png"
+            alt="PayPal Logo"
+            class="w-6 h-6 mt-auto mb-auto"
+          />
+          <a
+            class="text-lg mb-0 font-semibold tracking-tight text-gray-900 dark:text-white"
+          >
+            0
+          </a>
+        </div>
+        <a class="font-medium items-center text-yellow-500"> Cursos Activos </a>
+      </div>
+      <div
+        class="w-40 p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center"
+        [ngClass]="getClassMyMx()"
+      >
+        <div class="flex">
+          <img
+            src="assets/icons/profile/start_course_10402814.png"
+            alt="PayPal Logo"
+            class="w-6 h-6 mt-auto mb-auto"
+          />
+          <a
+            class="text-lg mb-0 font-semibold tracking-tight text-gray-900 dark:text-white"
+          >
+            0
+          </a>
+        </div>
+        <a class="inline-flex font-medium items-center text-yellow-500">
+          Cursos Por Iniciar
+        </a>
+      </div>
+      <div
+        class="w-40 p-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col items-center"
+      >
+        <div class="flex">
+          <img
+            src="assets/icons/profile/complete_course_10402796.png"
+            alt="PayPal Logo"
+            class="w-6 h-6 mt-auto mb-auto"
+          />
+          <a
+            class="text-lg mb-0 font-semibold tracking-tight text-gray-900 dark:text-white"
+          >
+            10
+          </a>
+        </div>
+        <a class="font-medium items-center text-yellow-500">
+          Cursos Completados
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenedor Derecho - Buttons  -->
+  <div
+    class="text-center text-xl items-center"
+    [ngClass]="getClassFlexcolFlex()"
+  >
+    <button
+      type="button"
+      class="text-gray-900 bg-[#F7BE38] mr-4 hover:bg-[#F7BE38]/90 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#F7BE38]/50 mb-2"
+    >
+      <img
+        src="assets/icons/profile/paypal_1145638.png"
+        alt="PayPal Logo"
+        class="w-4 h-4 me-2 -ms-1"
+      />
+      Check out with PayPal
+    </button>
+
+    <button
+      type="button"
+      class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-600 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 me-2 mb-2"
+    >
+      <img
+        src="assets/icons/profile/metamask.png"
+        alt="PayPal Logo"
+        class="w-4 h-4 me-2 -ms-1"
+      />
+      Connect with
+    </button>
+  </div>
+</div>
+
+<mat-grid-list
+  [cols]="(cols$ | async) || 3"
+  rowHeight="150px"
+  class="m-4 dark:text-white"
+  [gutterSize]="'1rem'"
+>
+  <mat-grid-tile
+    *ngFor="let tile of tilesProfile"
+    [colspan]="tile.cols"
+    [rowspan]="tile.rows"
+    class="dark:bg-gray-800"
+  >
+    <ng-container
+      >@if(tile.text=="DetailProfile") {
+      <div>PERFIL IMAGEN / CURSOS</div>
+      }@else if (tile.text=="Suggestions") {
+      <div>SUGERENCIAS/ PERFIL</div>
+      }@else if (tile.text=="Record") {
+      <div>HISTORIAL</div>
+      } @else if (tile.text=="Options") {
+      <div>OPCIONES</div>
+      }</ng-container
+    >
+  </mat-grid-tile>
+</mat-grid-list>

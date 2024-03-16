@@ -13,12 +13,12 @@
 }
 
 h1.cheeth-sidenav {
-  margin-left: 8px;
+  margin-left: 2px;
+  font-size: 1rem;
 }
 
 .sidenav-container {
   flex: 1;
-  // background-color: #f9fafb;
 }
 
 /* *********** CSS NG MATERIAL mat-sidenav ************* */
@@ -38,13 +38,4 @@ mat-sidenav,
 
 mat-toolbar {
   background: white;
-}
-
---mat-menu-container-color {
-  background-color: #1f2937 !important ;
-}
-
-::ng-deep .custom-class {
-  background-color: var(--mat-menu-container-color);
-  color: white !important;
 }

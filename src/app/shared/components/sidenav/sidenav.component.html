@@ -1,7 +1,7 @@
 <div class="sidenav-header">
   <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
-    <h2>Bryan Rafael Andia</h2>
-    <p>CEO CHEETHAKADEMY</p>
+    <h2 class="text-gray-900 dark:text-white">Bryan Rafael Andia</h2>
+    <p class="text-gray-900 dark:text-white">CEO CHEETHAKADEMY</p>
   </div>
 </div>
 <mat-nav-list>
@@ -12,10 +12,12 @@
     routerLinkActive="selected-menu-item"
     #rla="routerLinkActive"
     [activated]="rla.isActive"
+    class="dark:border-current"
   >
     <mat-icon
       [fontSet]="rla.isActive ? 'material-icons' : 'material-icons-outlined'"
       matListItemIcon
+      class="dark:border-current"
       >{{ item.icon }}</mat-icon
     >
     <span matListItemTitle *ngIf="!sideNavCollapsed()">{{ item.label }}</span>

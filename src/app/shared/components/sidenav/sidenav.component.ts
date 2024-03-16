@@ -31,8 +31,6 @@ import {
 export class SidenavComponent {
   subscription!: Subscription;
   dataUser!: IData;
-
-  isRol: string = '';
   menuItems = signal<MenuItem[]>([]);
 
   constructor(private authService: AuthService) {}

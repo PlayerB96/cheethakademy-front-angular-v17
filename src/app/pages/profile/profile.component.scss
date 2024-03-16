@@ -1,0 +1,12 @@
+@use "../../../styles/variables/typography.scss" as type;
+
+p {
+  font-family: type.$main-family-regular;
+}
+:host * {
+  transition: all 400ms ease-in-out;
+}
+mat-grid-tile {
+  background: white;
+  border-radius: 6px;
+}
