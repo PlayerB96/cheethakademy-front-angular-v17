@@ -9,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { TokenService } from '../../core/services/auth/token.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) {
     /* Formulario de Inicio de Sesión */
     this.loginForm = this.fb.group({
@@ -34,26 +36,32 @@ export class LoginComponent {
     });
   }
 
-  /* Enviar formulario de Inicio de Sesión al API */
+  /* Enviar formulario de Inicio de Sesión sin el API */
   onSubmit() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
-
-      this.authService.onLogin(this.loginForm.value).subscribe({
-        /* Validación para usuario válido */
-        next: (value) => {
-          this.router.navigate(['dashboard']);
-        },
-        /* Validación de errores 'usuario invalido(401) - server mantenimiento(500) */
-        error: (error) => {
-          this.statusSubmit = error.error.status;
-          if (error.status === 401) {
-            this.messageError = error.error.message;
-          }
-        },
-      });
-    } else {
-      this.loginForm.markAllAsTouched();
-    }
+    this.router.navigate(['dashboard']);
+    this.tokenService.updateTokenLocal(true);
   }
+
+  /* Enviar formulario de Inicio de Sesión al API */
+  // onSubmit() {
+  //   if (this.loginForm.valid) {
+  //     console.log(this.loginForm.value);
+
+  //     this.authService.onLogin(this.loginForm.value).subscribe({
+  //       /* Validación para usuario válido */
+  //       next: (value) => {
+  //         this.router.navigate(['dashboard']);
+  //       },
+  //       /* Validación de errores 'usuario invalido(401) - server mantenimiento(500) */
+  //       error: (error) => {
+  //         this.statusSubmit = error.error.status;
+  //         if (error.status === 401) {
+  //           this.messageError = error.error.message;
+  //         }
+  //       },
+  //     });
+  //   } else {
+  //     this.loginForm.markAllAsTouched();
+  //   }
+  // }
 }

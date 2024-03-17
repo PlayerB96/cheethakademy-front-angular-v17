@@ -17,6 +17,11 @@ export class TokenService {
     }
   }
 
+  /* Validaciones con el Token de inicio de Sesión sin conexion a API*/
+  updateTokenLocal(status: boolean) {
+    this.isAuthentication.next(status);
+  }
+
   /* Validaciones con el Token de inicio de Sesión*/
   updateToken(status: boolean) {
     this.isAuthentication.next(status);
