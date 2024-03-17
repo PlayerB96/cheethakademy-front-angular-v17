@@ -1,7 +1,0 @@
-
-[[redirects]]
-  from = "http://143.244.144.235:8000/*"
-  to = "https://143.244.144.235:8000/:splat"
-  status = 301
-  force = true
-
