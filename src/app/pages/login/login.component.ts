@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { TokenService } from '../../core/services/auth/token.service';
+import { constants } from '../../constants/constants';
 
 @Component({
   selector: 'app-login',
@@ -40,6 +41,21 @@ export class LoginComponent {
   onSubmit() {
     this.router.navigate(['dashboard']);
     this.tokenService.updateTokenLocal(true);
+    localStorage.setItem(
+      constants.DATA_USER,
+      JSON.stringify({
+        id: 1,
+        username: 'bryan',
+        name: 'Bryan',
+        rol: 'Estudiante',
+        email: 'player.b.1996@gmail.com',
+        lastname: 'Rafael',
+        operatorId: '0.0.1602',
+        operatorKey:
+          '302e020100300506032b6570042204201035935f406bd29f6e4128b2f86ae7c7fca24a5c9ee88413fa37f7502f969110',
+        dashboardId: 1,
+      })
+    );
   }
 
   /* Enviar formulario de Inicio de Sesión al API */
