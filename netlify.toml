@@ -1,18 +1,7 @@
 
 [[redirects]]
-  from = "https://chheethakademy.netlify.app/*"
-  to = "https://143.244.144.235:8000/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://chheethakademy.netlify.app/*"
+  from = "https://chheethakademy.netlify.backend/*"
   to = "http://143.244.144.235:8000/:splat"
   status = 301
   force = true
 
-[[redirects]]
-   from = "http://chheethakademy.netlify.app/*"
-  to = "https://143.244.144.235:8000/:splat"
-  status = 301
-  force = true
