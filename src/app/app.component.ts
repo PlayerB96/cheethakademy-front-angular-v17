@@ -13,11 +13,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, map } from 'rxjs';
 import { MatMenuModule } from '@angular/material/menu';
 import { SidenavComponent } from './shared/components/sidenav/sidenav.component';
 import { TokenService } from './core/services/auth/token.service';
 import { AuthService } from './core/services/auth/auth.service';
+import { LoginComponent } from './pages/login/login.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +35,7 @@ import { AuthService } from './core/services/auth/auth.service';
     MatSidenavModule,
     MatListModule,
     MatMenuModule,
+    LoginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -41,20 +44,32 @@ export class AppComponent implements OnInit {
   constructor(
     private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) {
+    /* mantener en LocalStorage el modo oscuro la proxima vez que se inicia sesión */
     effect(() => {
       window.localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
     });
+
+    /* Observar cambios en matchesResponsive */
+    this.breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .subscribe(({ matches }) => {
+        this.matchesResponsive = matches;
+      });
   }
+
+  cols$!: Observable<number>;
+  matchesResponsive!: boolean;
 
   isAuth: boolean = false;
   subscription!: Subscription;
 
+  /* Configuraciones para el uso del DarkMode con Tailwind */
   darkMode = signal<boolean>(
     JSON.parse(window.localStorage.getItem('darkMode') ?? 'false')
   );
-
   @HostBinding('class.dark') get mode() {
     return this.darkMode();
   }
@@ -66,6 +81,16 @@ export class AppComponent implements OnInit {
         this.isAuth = isAuth;
       }
     );
+
+    /* Validación de BottonNavigation/SideNavigation para el Responsive */
+    this.cols$ = this.breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .pipe(
+        map(({ matches }) => {
+          this.matchesResponsive = matches;
+          return matches ? 3 : 9;
+        })
+      );
   }
 
   /* Cerrar Sesión y redirigir al Login */

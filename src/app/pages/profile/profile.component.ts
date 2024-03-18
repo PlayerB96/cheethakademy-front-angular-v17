@@ -44,7 +44,6 @@ export class ProfileComponent {
   }
 
   /* Funciones para modificar clases responsive para los Contenedoress */
-
   getClassFlexcolHeight() {
     const isResponsive = this.matchesResponsive;
     return {
