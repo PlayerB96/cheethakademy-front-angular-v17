@@ -20,6 +20,7 @@ import { TokenService } from './core/services/auth/token.service';
 import { AuthService } from './core/services/auth/auth.service';
 import { LoginComponent } from './pages/login/login.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BottomnavComponent } from './shared/components/bottomnav/bottomnav.component';
 
 @Component({
   selector: 'app-root',
@@ -36,6 +37,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
     MatListModule,
     MatMenuModule,
     LoginComponent,
+    BottomnavComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
