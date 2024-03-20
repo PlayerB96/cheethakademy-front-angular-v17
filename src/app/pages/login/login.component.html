@@ -5,7 +5,7 @@
     <!-- left side -->
     <div class="flex flex-col justify-center p-8 md:p-14">
       <span class="mb-3 text-4xl font-bold">Bienvenido</span>
-      <span class="font-light text-gray-400 mb-8">
+      <span class="font-normal text-gray-800 mb-8">
         Bienvenido de nuevo! Ingresa tus credenciales
       </span>
       <form
@@ -15,7 +15,7 @@
         novalidate
       >
         <div class="form-group py-4">
-          <span class="mb-2 text-md">Usuario</span>
+          <label for="user" class="mb-2 text-md">Usuario</label>
           <input
             type="text"
             class="form-control w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-700"
@@ -25,7 +25,7 @@
           />
         </div>
         <div class="form-group py-4">
-          <span class="mb-2 text-md">Contraseña</span>
+          <label for="password" class="mb-2 text-md">Contraseña</label>
           <input
             [ngClass]="{
               'border-red-700 focus:ring-red-700': statusSubmit == false
@@ -51,10 +51,10 @@
         }
 
         <div class="flex justify-between w-full py-4">
-          <div class="mr-24">
-            <input type="checkbox" name="ch" id="ch" class="mr-2" />
+          <label class="inline-flex items-center">
+            <input type="checkbox" class="mr-2" />
             <span class="text@-md">Remember for 30 days</span>
-          </div>
+          </label>
           <span class="font-bold text-md">Forgot password</span>
         </div>
 
@@ -74,7 +74,7 @@
           />
           Sign in with Google
         </button>
-        <div class="text-center text-gray-400">
+        <div class="text-center text-gray-800">
           Dont'have an account?
           <span class="font-bold text-black">Sign up for free</span>
         </div>
@@ -83,10 +83,11 @@
     <!-- {/* right side */} -->
     <div class="relative">
       <img
-        src="assets/IMAGE2-LOGIN.png"
+        src="assets/LOGIN-IMAGE-COMPRIMIDA.png"
         alt="img"
         class="w-[400px] h-full hidden rounded-r-2xl md:block object-cover"
       />
+
       <!-- text on image  -->
       <div
         class="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
