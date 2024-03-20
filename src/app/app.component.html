@@ -36,13 +36,16 @@
         </button>
       </div>
 
-      <button
-        mat-icon-button
-        [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu"
-      >
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <div>
+        <button [matMenuTriggerFor]="menu">
+          <img
+            src="assets/194377_n.jpg"
+            alt="img"
+            class="w-10 h-full inline rounded-full border-2 border-red-900"
+          />
+        </button>
+      </div>
+
       <mat-menu #menu="matMenu" class="custom-class">
         <button mat-menu-item [matMenuTriggerFor]="vertebrates">
           <mat-icon>dialpad</mat-icon>

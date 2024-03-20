@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
-import { MatListModule } from '@angular/material/list';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MenuItem } from '../../../core/models/sidenav/sidenav';
 import { IData } from '../../../core/models/auth/auth';
@@ -15,11 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [
     RouterOutlet,
-
     CommonModule,
     RouterLink,
     RouterLinkActive,
-    MatListModule,
     MatIconModule,
   ],
   templateUrl: './bottomnav.component.html',
