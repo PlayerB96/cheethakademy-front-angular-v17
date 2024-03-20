@@ -43,6 +43,7 @@ export class SidenavComponent {
       /* Validación de rol en usuario */
       if (this.dataUser.rol == 'Estudiante') {
         this.menuItems = menuItemsUser;
+        console.log(menuItemsUser);
       } else {
         this.menuItems = menuItemsAdmin;
       }

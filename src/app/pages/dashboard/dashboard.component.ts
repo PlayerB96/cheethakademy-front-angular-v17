@@ -16,22 +16,30 @@ import { tilesDashboard } from '../../core/models/dashboard/dashboard.grid.data'
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
-  cols$: Observable<number>;
+  cols$!: Observable<number>;
   tilesDashboard = <TileDashboard[]>[];
+  matchesResponsive!: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver) {
-    /* Obtener los Tiles del Dashboard */
-    this.tilesDashboard = tilesDashboard;
+  ngOnInit() {
     /* Validación de Columnas para el Responsive */
     this.cols$ = this.breakpointObserver
       .observe([Breakpoints.Handset, Breakpoints.Tablet])
       .pipe(
         map(({ matches }) => {
-          if (matches) {
-            return 2;
-          }
-          return 4;
+          this.matchesResponsive = matches;
+          return matches ? 2 : 4;
         })
       );
+  }
+
+  constructor(private breakpointObserver: BreakpointObserver) {
+    /* Obtener los Tiles del Dashboard */
+    this.tilesDashboard = tilesDashboard;
+    /* Observar cambios en matchesResponsive */
+    this.breakpointObserver
+      .observe([Breakpoints.Handset, Breakpoints.Tablet])
+      .subscribe(({ matches }) => {
+        this.matchesResponsive = matches;
+      });
   }
 }
