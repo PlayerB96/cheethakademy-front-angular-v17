@@ -59,6 +59,7 @@ export class ProfileComponent {
     return {
       '': !isResponsive,
       'flex-col': isResponsive,
+      'pt-4': isResponsive,
     };
   }
 
@@ -75,6 +76,14 @@ export class ProfileComponent {
     return {
       'my-2': isResponsive,
       'mx-2': !isResponsive,
+    };
+  }
+
+  getClassMarginVertical4() {
+    const isResponsive = this.matchesResponsive;
+    return {
+      '': !isResponsive,
+      'my-4': isResponsive,
     };
   }
 }
