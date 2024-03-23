@@ -10,26 +10,26 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    // canActivate: [guestGuard],
+    canActivate: [guestGuard],
   },
   {
     path: '',
     component: LoginComponent,
-    // canActivate: [guestGuard],
+    canActivate: [guestGuard],
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'home',
     component: HomeComponent,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
 ];
